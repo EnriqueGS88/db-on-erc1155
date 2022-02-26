@@ -1,4 +1,7 @@
+# node modules
 node_modules
+
+# environment variables
 .env
 coverage
 coverage.json
@@ -7,3 +10,9 @@ typechain
 #Hardhat files
 cache
 artifacts
+
+#private files
+02_deploy_randomSvg.js
+sample_hardhat.config.js
+
+

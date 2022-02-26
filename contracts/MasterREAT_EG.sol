@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract MasterREAT is ERC1155, Ownable {
+contract MasterREAT_EG is ERC1155, Ownable {
     using Counters for Counters.Counter;
     Counters.Counter private _reatAutoId;
 
@@ -35,6 +35,7 @@ contract MasterREAT is ERC1155, Ownable {
 
     /**
         * @dev updateMasterUri() sets a new URI for the token type passed as argument
+        * @dev where is the OWNER defined ?
         * @param uri_ is the ID that will be set for the token type
         * @notice a new token type is created for every single property
      */
@@ -43,20 +44,20 @@ contract MasterREAT is ERC1155, Ownable {
     }
 
     
-    /**
-        * @dev Function to add the tokenId on the URI that's returned
-        * @param _tokenId variable passed to assign the ID, that is the token type 
-        * @notice it takes the base URI and concatenates the _tokenId and adds ".json" in the end
-     */
-    function uri(uint256 _tokenId) override public view returns(string memory) {
-        return string(
-            abi.encode(
-                baseUri,
-                Strings.toString(_tokenId),
-                ".json"
-            )
-        )
-    }
+    // /**
+    //     * @dev Function to add the tokenId on the URI that's returned
+    //     * @param _tokenId variable passed to assign the ID, that is the token type 
+    //     * @notice it takes the base URI and concatenates the _tokenId and adds ".json" in the end
+    //  */
+    // function uri(uint256 _tokenId) override public view returns(string memory) {
+    //     return string(
+    //         abi.encode(
+    //             baseUri,
+    //             Strings.toString(_tokenId),
+    //             ".json"
+    //         )
+    //     )
+    // }
     
     /**
         * @dev addREAT() mints the token and updates the token counter
