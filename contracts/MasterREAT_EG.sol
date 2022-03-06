@@ -3,15 +3,19 @@ pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract MasterREAT_EG is ERC1155, Ownable {
+    string baseUri = "https://www.realestatechain.es/api/item/";
     using Counters for Counters.Counter;
     Counters.Counter private _reatAutoId;
+    // using Strings for Strings;
+
 
     /**
         * @dev The Struct REATData stores all metadata for every token
-        * @param REATid is the tokenID in the standard ERC-1155
+        * @param REATid acts as the tokenID in the standard ERC-1155
         * @param idCatastr is the property id provided by the Catastro office
         * @param hashJsonToken created by doing keccak256 on json of property metadata
         * @param hashJsonDoc created by doing keccak256 on json of all docs submitted at Catastro office    
@@ -44,27 +48,36 @@ contract MasterREAT_EG is ERC1155, Ownable {
     }
 
     
-    // /**
-    //     * @dev Function to add the tokenId on the URI that's returned
-    //     * @param _tokenId variable passed to assign the ID, that is the token type 
-    //     * @notice it takes the base URI and concatenates the _tokenId and adds ".json" in the end
-    //  */
-    // function uri(uint256 _tokenId) override public view returns(string memory) {
-    //     return string(
-    //         abi.encode(
-    //             baseUri,
-    //             Strings.toString(_tokenId),
-    //             ".json"
-    //         )
-    //     )
-    // }
+
+// To be fixed:
+//  * baseUri = seems it cannot be read
+//  * Strings.toString is not imported correctly
+
+    /**
+        * @dev Function to add the tokenId on the URI that's returned
+        * @param _tokenId variable passed to assign the ID, that is the token type 
+        * @notice it takes the base URI and concatenates the _tokenId and adds ".json" in the end
+     */
+    function getUri(_tokenId) public view returns(string memory) {
+
+        return string(
+            abi.encode(
+                baseUri,
+                Strings.toString(_tokenId),
+                ".json"
+            )
+        );
+    
+    }
     
     /**
         * @dev addREAT() mints the token and updates the token counter
         * @param _idCatastro is the ID to be provided by the Catastro office
         * @param _hashJsonToken is the keccak256 of the property metadata
+        * @notice why are passing the parameters as calldata ?
+        * @notice token minted with URI property "hashJsonDoc" empty. It'll be added later on
+        * @return ID of the struct REATdata that got created/updated
      */
-
     function addREAT(
         string calldata _idCatastro,
         string calldata _hashJsonToken
