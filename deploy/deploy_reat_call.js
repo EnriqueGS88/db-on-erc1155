@@ -41,6 +41,38 @@ module.exports = async( {
     let _tokenId = 1;
     let uri_tx = await masterReat.getUri( _tokenId );
     log( "This is the tokenURI for the Id you provided: ", uri_tx );
+
+
+    // Send tx to create a struct on addREAT() with dummy data
+
+    const catastroID = '';
+
+    const jsonMetadata = {
+        name: catastroID,
+        description: "REAT token",
+        image: "",
+        surface: ""
+    }
+
+    let stringMetadata = JSON.stringify( jsonMetadata );
+
+    let hash = ( string ) => {
+        let hashedValue = ethers.utils.keccak256( ethers.utils.toUtf8Bytes( string ) );
+        return hashedValue;
+    }
+
+    let hashJsonToken = hash( stringMetadata );
+    let hashJsonDoc = hash( hashJsonToken )
+
+    log( `hashJsonToken: ${hashJsonToken} `);
+
+    log( `hashJsonDoc: ${hashJsonDoc} `);
+
+
+
+
+
+
     
 
 };

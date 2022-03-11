@@ -7,8 +7,15 @@ const catastroID = '2333308DF3823C0093LW';
 const jsonMetadata = {
     name: catastroID,
     description: "REAT token",
-    image: "https://www1.sedecatastro.gob.es/Cartografia/FXCC/FotoFachada.aspx?refcat=2333308DF3823C0093LW&del=8&mun=900&from=OVCListaBienes&captcha=062563206d0974d9dec507c38ba610894690efc5",
+    image: "ipfs://bafybeihbq6rt7746upcdvud5tag3zbufeqdlr6axd3b4fs4k7uq5geqjry/fachadaUpc.jpg",
     surface: "690m2"
+}
+
+const ipfsMetadata = {
+    token: {
+        ipnft: 'bafyreiayta72by25webr7ht35dpt2mirrnsdpvlveqnxbec7lnixdp3n24',
+        url: 'ipfs://bafyreiayta72by25webr7ht35dpt2mirrnsdpvlveqnxbec7lnixdp3n24/metadata.json'
+      }
 }
 
 // Convert the metadata json into a string
