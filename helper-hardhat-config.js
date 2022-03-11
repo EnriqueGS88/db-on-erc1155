@@ -12,7 +12,7 @@ const networkConfig = {
         fee: '100000000000000000'  // JUELS / WEI units = 0.1 LINK
     },
     5: {
-        
+        name: 'goerli'
     }
 }
 

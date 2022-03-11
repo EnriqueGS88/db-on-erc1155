@@ -48,7 +48,11 @@ contract MasterREAT_EG is ERC1155, Ownable {
         _setURI(uri_);
     }
 
-    
+
+    // Test function
+    function getBaseUri() public view returns(string memory) {
+        return baseUri;
+    }
 
 // To be fixed:
 //  * baseUri = seems it cannot be read
