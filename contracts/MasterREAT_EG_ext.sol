@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract MasterREAT_EG is ERC1155, Ownable {
+contract MasterREAT_EG_ext is ERC1155, Ownable {
     string baseUri = "https://www.realestatechain.es/api/item/";
     using Counters for Counters.Counter;
     Counters.Counter private _reatAutoId;
