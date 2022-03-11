@@ -45,13 +45,13 @@ module.exports = async( {
 
     // Send tx to create a struct on addREAT() with dummy data
 
-    const catastroID = '';
+    const catastroID = '2333308DF3823C0093LW';
 
     const jsonMetadata = {
         name: catastroID,
         description: "REAT token",
-        image: "",
-        surface: ""
+        image: "ipfs://bafybeihbq6rt7746upcdvud5tag3zbufeqdlr6axd3b4fs4k7uq5geqjry/fachadaUpc.jpg",
+        surface: "690m2"
     }
 
     let stringMetadata = JSON.stringify( jsonMetadata );
@@ -64,16 +64,17 @@ module.exports = async( {
     let hashJsonToken = hash( stringMetadata );
     let hashJsonDoc = hash( hashJsonToken )
 
-    log( `hashJsonToken: ${hashJsonToken} `);
+    log( `Your hashJsonToken is: ${hashJsonToken}`);
 
-    log( `hashJsonDoc: ${hashJsonDoc} `);
+    log( `Your hashJsonDoc is: ${hashJsonDoc}`);
 
+    let storeProperty = await masterReat.addREAT( catastroID, hashJsonToken, {gasLimit: 2000000 } );
+    await storeProperty.wait(1);
 
+    let reatDataStruct = await masterReat.reatdata( 1 );
 
-
-
-
-    
+    log( `This is the property data you just stored on the blockchain:\n ${reatDataStruct}` );
+   
 
 };
 
