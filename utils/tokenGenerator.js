@@ -22,4 +22,6 @@ let hashJsonToken = ( string ) => {
     return hashedValue;
 }
 
-console.log( hashJsonToken( stringMetadata ) );
+console.log( "hashJsonToken: ", hashJsonToken( stringMetadata ) );
+
+console.log( "hashJsonDoc: ", hashJsonToken( hashJsonToken( stringMetadata ) ) );
