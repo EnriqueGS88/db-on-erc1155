@@ -58,10 +58,10 @@ contract MasterREAT_EG is ERC1155, Ownable {
         * @param _tokenId variable passed to assign the ID, that is the token type 
         * @notice it takes the base URI and concatenates the _tokenId and adds ".json" in the end
      */
-    function getUri(_tokenId) public view returns(string memory) {
+    function getUri(uint256 _tokenId) public view returns(string memory) {
 
         return string(
-            abi.encode(
+            abi.encodePacked(
                 baseUri,
                 Strings.toString(_tokenId),
                 ".json"
