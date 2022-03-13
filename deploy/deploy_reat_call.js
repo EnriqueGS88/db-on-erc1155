@@ -1,6 +1,10 @@
 const { network, ethers } = require('hardhat');
 let { networkConfig } = require('../helper-hardhat-config');
 
+// // Roadmap
+// 1) Add a picture in the NFT 
+// 2) Add attributes to be readable by OpenSea
+
 module.exports = async( {
     getNamedAccounts,
     deployments,

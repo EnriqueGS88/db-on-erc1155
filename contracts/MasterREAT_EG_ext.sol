@@ -5,6 +5,13 @@ import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/security/Pausable.sol";
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+
+
+// // Roadmap
+// 1) Add a picture in the NFT
+// 2) Add attributes to be readable by OpenSea
 
 contract MasterREAT_EG_ext is ERC1155, Ownable {
     string baseUri = "https://www.realestatechain.es/api/item/";
@@ -52,7 +59,7 @@ contract MasterREAT_EG_ext is ERC1155, Ownable {
 
 // To be fixed:
 //  * baseUri = seems it cannot be read
-//  * Strings.toString is not imported correctly
+
 
     /**
         * @dev Function to add the tokenId on the URI that's returned
@@ -70,6 +77,14 @@ contract MasterREAT_EG_ext is ERC1155, Ownable {
         );
     
     }
+
+    /**
+        * @dev Function to format the URI into a form OpenSea can read
+        * @dev Moved the property "image" from the json up to one level above to be read by OpenSea
+    
+     */
+
+
     
     /**
         * @dev addREAT() mints the token and updates the token counter
