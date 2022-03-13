@@ -27,13 +27,14 @@ contract MasterREAT_EG_ext is ERC1155, Ownable {
         * @param idCatastr is the property id provided by the Catastro office
         * @param hashJsonToken created by doing keccak256 on json of property metadata
         * @param hashJsonDoc created by doing keccak256 on json of all docs submitted at Catastro office    
+        * @param exists replaced "bool" with "uint128" because it consumes less gas
      */
     struct REATData {
         uint256 REATid;
         string idCatastro;
         string hashJsonToken;
         string hashJsonDoc;
-        bool exists;
+        bool exists; // uint128 - it's cheaper than a bool
     }
 
     /**
