@@ -4,18 +4,12 @@ Store metadata about real estate in a distributed ledger.
 
 Metadata to be stored in an NFT (ERC-1155).
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
-
-Try running some of the following tasks:
+Upon cloning this repository, try running these commands:
 
 ```shell
-npx hardhat accounts
+npm install
 npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
+npx hardhat deploy --network rinkeby --tags reatCall
 ```
 
 # Verified Contracts
