@@ -7,13 +7,14 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/utils/Base64.sol";
 
 
 // // Roadmap
 // 1) Add a picture in the NFT
 // 2) Add attributes to be readable by OpenSea
 
-contract MasterREAT_EG_ext is ERC1155, Ownable {
+contract MasterREAT_EG_ext is ERC1155, Ownable, Pausable, ReentrancyGuard {
     string baseUri = "https://www.realestatechain.es/api/item/";
     using Counters for Counters.Counter;
     Counters.Counter private _reatAutoId;
@@ -27,7 +28,8 @@ contract MasterREAT_EG_ext is ERC1155, Ownable {
         * @param idCatastr is the property id provided by the Catastro office
         * @param hashJsonToken created by doing keccak256 on json of property metadata
         * @param hashJsonDoc created by doing keccak256 on json of all docs submitted at Catastro office    
-        * @param exists replaced "bool" with "uint128" because it consumes less gas
+        * @param exists replaced "bool" with "uint128" because it consumes 5k less gas
+        * @notice "exists" is initialized with 1 instead of 0 to save 20k gas
      */
     struct REATData {
         uint256 REATid;
@@ -51,8 +53,9 @@ contract MasterREAT_EG_ext is ERC1155, Ownable {
         * @dev where is the OWNER defined ?
         * @param uri_ is the ID that will be set for the token type
         * @notice a new token type is created for every single property
+        * @notice inherited modifier "nonReentrant" from ReentrancyGuard contract
      */
-    function updateMasterUri(string memory uri_) public onlyOwner {
+    function updateMasterUri(string memory uri_) public onlyOwner nonReentrant {
         _setURI(uri_);
     }
 
@@ -98,7 +101,7 @@ contract MasterREAT_EG_ext is ERC1155, Ownable {
     function addREAT(
         string calldata _idCatastro,
         string calldata _hashJsonToken
-    ) public onlyOwner returns (uint256) {
+    ) public onlyOwner nonReentrant returns (uint256) {
         _reatAutoId.increment();
         uint256 newREATId = _reatAutoId.current();
         _mint(msg.sender, newREATId, 1, "");

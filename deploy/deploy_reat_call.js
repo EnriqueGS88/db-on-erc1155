@@ -14,10 +14,10 @@ module.exports = async( {
     const { deployer } = await getNamedAccounts();
     const chainId = await getChainId();
 
-    log("Deploying 'MasterREAT_EG' Token Generator Contract");
+    log("Deploying 'MasterREAT_EG_ext' Token Generator Contract");
     
     // Deploy contract
-    const MasterREAT = await deploy( 'MasterREAT_EG', {
+    const MasterREAT = await deploy( 'MasterREAT_EG_ext', {
         from: deployer,
         args: [],
         log: true
