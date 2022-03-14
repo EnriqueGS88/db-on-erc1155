@@ -1,8 +1,10 @@
-# Basic Sample Hardhat Project
+# Database structured in an ERC-1155 NFT
 
 Store metadata about real estate in a distributed ledger.
 
-Metadata to be stored in an NFT (ERC-1155).
+The Metadata is structured in an NFT (ERC-1155) that points to data stored in IPFS.
+
+The contracts in this project rely heavily on the [OpenZeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts) contracts.
 
 Upon cloning this repository, try running these commands:
 
