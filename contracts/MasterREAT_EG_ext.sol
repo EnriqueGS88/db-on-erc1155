@@ -94,7 +94,7 @@ contract MasterREAT_EG_ext is ERC1155, Ownable, Pausable, ReentrancyGuard {
         * @dev addREAT() mints the token and updates the token counter
         * @param _idCatastro is the ID to be provided by the Catastro office
         * @param _hashJsonToken is the keccak256 of the property metadata
-        * @notice why are passing the parameters as calldata ?
+        * @notice why are we passing the parameters as calldata ?
         * @notice token minted with URI property "hashJsonDoc" empty. It'll be added later on
         * @return ID of the struct REATdata that got created/updated
      */
