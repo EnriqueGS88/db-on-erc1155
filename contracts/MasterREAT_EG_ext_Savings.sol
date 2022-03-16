@@ -13,11 +13,12 @@ import "@openzeppelin/contracts/utils/Base64.sol";
 // // Roadmap
 // 1) Add a picture in the NFT
 // 2) Add attributes to be readable by OpenSea
+// 3) Fix the function hashJsonDoc() = it expects a UINT128 and I'm sending a 256 bits test variable
 
 contract MasterREAT_EG_ext_Savings is ERC1155, Ownable, Pausable, ReentrancyGuard {
     string baseUri = "https://www.realestatechain.es/api/item/";
-    uint128 public constant DOESNT_EXIST = 1;
-    uint128 public constant EXISTS = 2;
+    uint256 public constant DOESNT_EXIST = 1;
+    uint256 public constant EXISTS = 2;
     
     using Counters for Counters.Counter;
     Counters.Counter private _reatAutoId;
@@ -36,8 +37,8 @@ contract MasterREAT_EG_ext_Savings is ERC1155, Ownable, Pausable, ReentrancyGuar
         uint256 REATid;
         string idCatastro;
         string hashJsonToken;
-        uint128 hashJsonDoc; // uint128 - cheaper than string and more descriptive
-        uint128 exists; // uint128 - it's cheaper than a bool
+        uint256 hashJsonDoc; // uint256 - cheaper than string and more descriptive
+        uint256 exists; // uint256 - it's cheaper than a bool
     }
 
     /**
