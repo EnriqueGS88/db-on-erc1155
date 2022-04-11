@@ -129,4 +129,29 @@ contract MasterREAT_EG_ext is ERC1155, Ownable, Pausable, ReentrancyGuard {
         require(reatdata[_id].exists == true);
         reatdata[_id].hashJsonDoc = _newHashJsonDoc;
     }
+
+
+// FUNCIÓ RETORNA URI AMB TOKEN
+    function uri(uint256 _tokenId)
+        public
+        view
+        override
+        returns (string memory)
+    {
+        require(_exists(_tokenId), "ERC1155: NONEXISTENT_TOKEN");
+        return string(abi.encodePacked(baseUri, jsonHash[_tokenId], ".json"));
+    }
+
+
+     /**
+     * @dev Returns whether the specified token exists by checking to see if it has a creator
+     * @param _id uint256 ID of the token to query the existence of
+     * @return bool whether the token exists
+     */
+    function _exists(uint256 _id) internal view returns (bool) {
+        return creators[_id] != address(0);
+    }
+
 }
+
+
