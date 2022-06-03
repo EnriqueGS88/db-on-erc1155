@@ -68,7 +68,7 @@ contract MasterREAT_EG_ext_Savings is ERC1155, Ownable, Pausable, ReentrancyGuar
 
 
     /**
-        * @dev Function to add the tokenId on the URI that's returned
+        * @dev Function to get the URI by passing the tokenId
         * @param _tokenId variable passed to assign the ID, that is the token type 
         * @notice it takes the base URI and concatenates the _tokenId and adds ".json" in the end
      */
