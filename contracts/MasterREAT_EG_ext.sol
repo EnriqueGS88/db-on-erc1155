@@ -10,16 +10,11 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/Base64.sol";
 
 
-// // Roadmap
-// 1) Add a picture in the NFT
-// 2) Add attributes to be readable by OpenSea
-
 contract MasterREAT_EG_ext is ERC1155, Ownable, Pausable, ReentrancyGuard {
     string baseUri = "https://www.realestatechain.es/api/item/";
     using Counters for Counters.Counter;
     Counters.Counter private _reatAutoId;
-    // Imported Strings library to convert values into Strings
-    // using Strings for Strings;
+    address private _owner = msg.sender;
 
 
     /**
@@ -81,14 +76,6 @@ contract MasterREAT_EG_ext is ERC1155, Ownable, Pausable, ReentrancyGuard {
         );
     
     }
-
-    /**
-        * @dev Function to format the URI into a form OpenSea can read
-        * @dev Moved the property "image" from the json up to one level above to be read by OpenSea
-    
-     */
-
-
     
     /**
         * @dev addREAT() mints the token and updates the token counter
@@ -131,26 +118,26 @@ contract MasterREAT_EG_ext is ERC1155, Ownable, Pausable, ReentrancyGuard {
     }
 
 
-// FUNCIÓ RETORNA URI AMB TOKEN
-    function uri(uint256 _tokenId)
-        public
-        view
-        override
-        returns (string memory)
-    {
-        require(_exists(_tokenId), "ERC1155: NONEXISTENT_TOKEN");
-        return string(abi.encodePacked(baseUri, jsonHash[_tokenId], ".json"));
-    }
+    // // FUNCIÓ RETORNA URI AMB TOKEN
+    // function uri(uint256 _tokenId)
+    //     public
+    //     view
+    //     override
+    //     returns (string memory)
+    // {
+    //     require(_exists(_tokenId), "ERC1155: NONEXISTENT_TOKEN");
+    //     return string(abi.encodePacked(baseUri, jsonHash[_tokenId], ".json"));
+    // }
 
 
-     /**
-     * @dev Returns whether the specified token exists by checking to see if it has a creator
-     * @param _id uint256 ID of the token to query the existence of
-     * @return bool whether the token exists
-     */
-    function _exists(uint256 _id) internal view returns (bool) {
-        return creators[_id] != address(0);
-    }
+    //  /**
+    //  * @dev Returns whether the specified token exists by checking to see if it has a creator
+    //  * @param _id uint256 ID of the token to query the existence of
+    //  * @return bool whether the token exists
+    //  */
+    // function _exists(uint256 _id) internal view returns (bool) {
+    //     return creators[_id] != address(0);
+    // }
 
 }
 

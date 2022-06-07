@@ -10,16 +10,15 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/Base64.sol";
 
 
-// // Roadmap
-// 1) Add a picture in the NFT
-// 2) Add attributes to be readable by OpenSea
-// 3) Fix the function hashJsonDoc() = it expects a UINT128 and I'm sending a 256 bits test variable
+// // Working in progress
+// 1) Fix the function hashJsonDoc() = it expects a UINT128 and I'm sending a 256 bits test variable
 
 contract MasterREAT_EG_ext_Savings is ERC1155, Ownable, Pausable, ReentrancyGuard {
     string baseUri = "https://www.realestatechain.es/api/item/";
     uint256 public constant DOESNT_EXIST = 1;
     uint256 public constant EXISTS = 2;
-    
+    address private _owner = msg.sender;
+
     using Counters for Counters.Counter;
     Counters.Counter private _reatAutoId;
 
