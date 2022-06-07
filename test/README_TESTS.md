@@ -75,7 +75,7 @@ Audit Trail for the Test Steps taken for each deployed contract
 
 | Date | Contract | Comments |
 | ---- | -------- | -------- |
-| 07.06.2022 | [Contract]() | Replaced boolean with constants for savings. Changed uint128 for uint256 on updateHashJsonDoc()  |
+| 07.06.2022 | [Contract](https://rinkeby.etherscan.io/address/0x9482d2f64801b9db7838904824ed92907094762c#code) | Replaced boolean with constants for savings. Changed uint128 for uint256 on updateHashJsonDoc()  |
 
 ## Test Steps
 
