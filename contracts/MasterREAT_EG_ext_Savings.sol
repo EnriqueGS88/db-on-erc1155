@@ -110,7 +110,7 @@ contract MasterREAT_EG_ext_Savings is ERC1155, Ownable, Pausable, ReentrancyGuar
         * @param _id used to search in the reatdata mapping to find the struct that will be updated
         * @param _newHashJsonDoc is the new hash that will replace the hashJsonDoc inside the struct reatdata
      */
-    function updateHashJsonDoc(uint256 _id, uint128 _newHashJsonDoc)
+    function updateHashJsonDoc(uint256 _id, uint256 _newHashJsonDoc)
         public
         onlyOwner
     {
