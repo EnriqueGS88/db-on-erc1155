@@ -60,11 +60,6 @@ contract MasterREAT_EG_ext_Savings is ERC1155, Ownable, Pausable, ReentrancyGuar
         _setURI(uri_);
     }
 
-    
-
-// To be fixed:
-//  * baseUri = seems it cannot be read
-
 
     /**
         * @dev Function to get the URI by passing the tokenId
@@ -82,14 +77,6 @@ contract MasterREAT_EG_ext_Savings is ERC1155, Ownable, Pausable, ReentrancyGuar
         );
     
     }
-
-    /**
-        * @dev Function to format the URI into a form OpenSea can read
-        * @dev Moved the property "image" from the json up to one level above to be read by OpenSea
-    
-     */
-
-
     
     /**
         * @dev addREAT() mints the token and updates the token counter
